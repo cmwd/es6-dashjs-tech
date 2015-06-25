@@ -1,4 +1,4 @@
 # videojs-dashjs-tech
 
 TODO:
-  * handling dashjs events
+  * handle dashjs events
