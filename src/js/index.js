@@ -4,9 +4,6 @@ let videojs = window.videojs;
 let Dash = window.Dash;
 let MediaPlayer = window.MediaPlayer;
 let Html5 = videojs.getComponent('Html5');
-let ErrorDisplay = videojs.getComponent('ErrorDisplay');
-
-console.log(ErrorDisplay);
 
 class Dashjs extends Html5 {
 
@@ -27,8 +24,7 @@ class Dashjs extends Html5 {
 
         if (source) {
             this.ready(() => {
-
-                this.mediaPlayer.attachSource(source.src);
+                this.setSource(source);
             });
         }
     }
@@ -45,7 +41,7 @@ class Dashjs extends Html5 {
             }
         }
         
-        return Html5.prototype.duration.call(this);
+        return super.duration();
     }
 
     currentTime() {
@@ -60,7 +56,7 @@ class Dashjs extends Html5 {
             }
         }
 
-        return Html5.prototype.currentTime.call(this);
+        return super.currentTime();
     }
 
     setCurrentTime(time) {
@@ -69,8 +65,13 @@ class Dashjs extends Html5 {
             this.mediaPlayer.seek(time);
         
         } else {
-            Html5.prototype.setCurrentTime.call(this, time);
+            super.setCurrentTime(time);
         }
+    }
+
+    setSource(source) {
+        
+        this.mediaPlayer.attachSource(source.src, null, null);
     }
 }
 
