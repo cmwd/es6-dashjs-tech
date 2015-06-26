@@ -1,8 +1,5 @@
-import window from 'global/window';
+import { videojs, Dash, MediaPlayer } from 'global/window';
 
-let videojs = window.videojs;
-let Dash = window.Dash;
-let MediaPlayer = window.MediaPlayer;
 let Html5 = videojs.getComponent('Html5');
 
 class Dashjs extends Html5 {
@@ -70,7 +67,7 @@ class Dashjs extends Html5 {
     }
 
     setSource(source) {
-        
+
         this.mediaPlayer.attachSource(source.src, null, null);
     }
 }
